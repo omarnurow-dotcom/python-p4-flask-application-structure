@@ -1,11 +1,6 @@
 from flask import Flask
-from config import db, migrate, Config
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_object(Config)
-
-db.init_app(app)
-migrate.init_app(app, db)
+app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -17,4 +12,3 @@ def user(username):
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
-
